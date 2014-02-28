@@ -1,0 +1,34 @@
+[% PROCESS 'header.html' title='CPAN Regular Releasers' %]
+<div class="selector">
+    <div class=group>
+        <span[% IF chapter=='current' %] class="selected"[% END %]>Current chains:</span>
+        <a href="index.html"[% IF chapter=='current' && section=='top10' %]class="selected"[% END %]>top 10</a>
+        <a href="current-top250.html"[% IF chapter=='current' && section=='top250' %]class="selected"[% END %]>top 250</a>
+    </div>
+    <div class=group>
+        <span[% IF chapter=='alltime' %] class="selected"[% END %]>All-time chains:</span>
+        <a href="alltime-top10.html"[% IF chapter=='alltime' && section=='top10' %]class="selected"[% END %]>top 10</a>
+        <a href="alltime-top250.html"[% IF chapter=='alltime' && section=='top250' %]class="selected"[% END %]>top 250</a>
+    </div>
+</div>
+<table width="100%" align=center>
+    <tr valign=top>
+        [% FOREACH list IN lists %]
+            <td align=center>
+            <table cellspacing=0 cellpadding=0 class=chain>
+                <thead><tr><th colspan=3>[% list.title %]</th></tr></thead>
+                <tbody>
+                    [% FOREACH entry IN list.entries %][% NEXT IF limit.defined && loop.count > limit %]
+                        <tr class=user>
+                            <td align=left>[% loop.count %].</td>
+                            <td align=left><a href="https://metacpan.org/author/[% entry.user %]">[% entry.user %]</a></td>
+                            <td align=right>[% entry.count %]</td>
+                        </tr>
+                    [% END %]
+                </tbody>
+            </table>
+            </td>
+        [% END %]
+    </tr>
+</table>
+[% PROCESS 'footer.html' %]
