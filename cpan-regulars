@@ -100,6 +100,7 @@ sub find_current_chains
 
     foreach my $category (qw(month week day)) {
         my %chain;
+        my %safe;
         my @entries;
 
         USER:
@@ -115,10 +116,11 @@ sub find_current_chains
 
                     next USER;
                 }
+                $safe{$user} = 1 if $bin eq $bins{$category}->[0];
                 $chain{$user}++;
             }
         }
-        @entries = map { { user => $_, count => $chain{$_} } }
+        @entries = map { { user => $_, count => $chain{$_}, safe => $safe{$_} // 0 } }
                    grep { $chain{$_} > 2 }
                    sort { $chain{$b} <=> $chain{$a} }
                    keys %chain;

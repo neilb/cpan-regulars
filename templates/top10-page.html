@@ -19,7 +19,7 @@
                 <thead><tr><th colspan=3>[% list.title %]</th></tr></thead>
                 <tbody>
                     [% FOREACH entry IN list.entries %][% NEXT IF limit.defined && loop.count > limit %]
-                        <tr class=user>
+                        <tr class="user[% IF entry.safe %] safe[% END %]">
                             <td align=left>[% loop.count %].</td>
                             <td align=left><a href="https://metacpan.org/author/[% entry.user %]">[% entry.user %]</a></td>
                             <td align=right>[% entry.count %]</td>

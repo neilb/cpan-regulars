@@ -48,6 +48,14 @@ a {
     text-decoration: none;
 }
 
+tr.user.safe {
+    background-color: #cceecc;
+}
+
+tr.user.safe:hover {
+    background-color: #bbddbb;
+}
+
 tr.user:hover {
     background-color: #eaeaea;
 }
@@ -57,6 +65,7 @@ tr.user td {
     margin-right: 0;
     padding-left: 10px;
     padding-right: 10px;
+    border-top: solid 1px #fff;
 }
 
 tr.user td:first-child {
