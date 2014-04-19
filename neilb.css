@@ -52,6 +52,14 @@ tr.user.safe {
     background-color: #cceecc;
 }
 
+tr.user.active {
+    background-color: #ffff99;
+}
+
+tr.user.active:hover {
+    background-color: #E6E68A;
+}
+
 tr.user.safe:hover {
     background-color: #bbddbb;
 }
